@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-        registryCredential = '[dockerhub]'
+        registryCredential = 'dockerhub'
         imageName = 'nitishchandu/external'
         dockerImage = ''
         }
@@ -33,7 +33,9 @@ pipeline {
             steps{
                 script {
                     echo 'push the image to docker hub' 
-                    sh "docker push ${imageName}:${env.BUILD_ID}"
+                    docker.withRegistry( '', registryCredential ) {
+                        sh "docker push ${imageName}:${env.BUILD_ID}"
+                    }
                 }
             }
         }     
@@ -52,7 +54,6 @@ pipeline {
         }     
         stage('Remove local docker image') {
             steps{
-                sh "docker rmi $imageName:latest"
                 sh "docker rmi $imageName:$BUILD_NUMBER"
             }
         }
