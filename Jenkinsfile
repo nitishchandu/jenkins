@@ -49,7 +49,8 @@ pipeline {
                     }
             steps {
                 echo 'authenticating with k8s cluser'
-                sh 'gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project roidtc-june22-u111'
+                sh 'gcloud container clusters get-credentials gcp-k8s-tf-cluster --zone us-central1-c --project roidtc-june22-u111'
+                sh "kubectl set image deployment/events-external-deployment mycontainer=${imageName}:${env.BUILD_ID} --namespace=events"
              }
         }     
         stage('Remove local docker image') {
