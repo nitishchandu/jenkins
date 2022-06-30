@@ -41,6 +41,8 @@ pipeline {
                         }
                     }
             steps {
+                echo 'authenticating with k8s cluser'
+                sh 'gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project roidtc-june22-u111'
              }
         }     
         stage('Remove local docker image') {
