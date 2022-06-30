@@ -21,7 +21,7 @@ pipeline {
         stage('Building image') {
             steps{
                 script {
-                    git branch: 'my_specific_branch',
+                    git branch: 'main',
                         url: 'https://github.com/nitishchandu/deloitte_devops_trn_external.git'
                     sh 'ls -l'
                     echo 'build the image' 
