@@ -25,7 +25,7 @@ pipeline {
                         url: 'https://github.com/nitishchandu/deloitte_devops_trn_external.git'
                     sh 'ls -l'
                     echo 'build the image' 
-                    sh 'docker.build("${imageName}:${env.BUILD_ID}")'
+                    sh 'docker build -t "${imageName}:${env.BUILD_ID}" .'
                 }
             }
             }
