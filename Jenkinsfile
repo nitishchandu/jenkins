@@ -19,7 +19,7 @@ pipeline {
                     git branch: 'main',
                         url: 'https://github.com/nitishchandu/deloitte_devops_trn_external.git'
                     sh 'npm install'
-                    //sh 'npm test'
+                    sh 'npm test'
                 }
             }
         }
