@@ -18,13 +18,9 @@ pipeline {
                 script {
                     git branch: 'main',
                         url: 'https://github.com/nitishchandu/deloitte_devops_trn_external.git'
-                    sh 'cd deloitte_devops_trn_external'
                     sh 'npm install'
-                    sh 'npm test'
+                    //sh 'npm test'
                 }
-                //echo 'Retrieve source from github. run npm install and npm test' 
-                //sh 'npm install'
-                //sh 'npm test'
             }
         }
         stage('Building image') {
