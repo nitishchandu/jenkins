@@ -16,6 +16,8 @@ pipeline {
             }
             steps {
                 echo 'Retrieve source from github. run npm install and npm test' 
+                sh 'npm install'
+                sh 'npm test'
             }
         }
         stage('Building image') {
